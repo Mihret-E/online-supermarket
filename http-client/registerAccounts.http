@@ -1,0 +1,21 @@
+###
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{
+   "firstName":"Selam",
+   "middleName":"Sel",
+   "lastName":"Yoseph",
+   "dateOfBirth":"1996-12-11",
+   "phoneNumber":"+251910505439",
+   "email":"selam@gmail.com",
+   "pin":"123456",
+  "balance": "5000"
+
+
+}
+
+###
+
+###
+GET http://localhost:8080/api/accounts
