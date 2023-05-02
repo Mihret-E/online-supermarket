@@ -25,8 +25,8 @@ public class PurchaseServiceTest {
     public void shouldCreateSucessfulPurchase() throws Exception {
 //given
         PurchaseRequest purchaseRequest = PurchaseRequest.builder()
-                .itemsId("1")
-                .custId("1")
+                .itemsId(1L)
+                .custId(1L)
                 .itemName("Ketchup")
                 .itemPrice(20.0)
                 .quantity(5)
@@ -35,27 +35,17 @@ public class PurchaseServiceTest {
                 .customerBalance(2000.0)
                 .build();
 
-//when
-       /* try{
 
-        }
-        catch (Exception e){
-
-        }*/
         //@NotNull
         Purchase  purchase = purchaseService.purchaseItem(purchaseRequest);
-//then
+
       //  Account account = new Account();
         assertNotNull(purchase.getPurchaseId());
-        assertEquals(1900.0,purchase.getCustomerBalance());
-       // assertEquals(100100,purchase.getCust().getBalance());
+        assertEquals(1900.0,purchase.getCustomer().getBalance());
+
 
     }
 
-   // @Test
-    //public shouldFailIfBalanceIsInsufficent(){
-   //     Exception exception
-//
-   // }
+
 
 }

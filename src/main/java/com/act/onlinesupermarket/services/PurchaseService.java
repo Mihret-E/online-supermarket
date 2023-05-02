@@ -22,50 +22,7 @@ public class PurchaseService {
     @Autowired
     private ItemsRepository itemsRepository;
 
-  /*  public Purchase purchaseItem(PurchaseRequest purchaseRequest )throws Exception{
 
-        if (purchaseRequest.getCustomer_id()==null){
-            throw new Exception("Customer Id must not be Null");
-        }
-        if (purchaseRequest.getItems_id()==null){
-            throw new Exception("Items Id must not be Null");
-        }
-        Account cust = accountRepository.findById(purchaseRequest.getCustomer_id()).get();
-        Items items = itemsRepository.findById(purchaseRequest.getItems_id()).get();
-
-        Double totalPrice = purchaseRequest.getQuantity()* purchaseRequest.getItemPrice();
-
-        if(cust.getBalance() < totalPrice){
-            throw new Exception("Insufficent Balance");
-        }
-
-        Double newCustBalance = cust.getBalance() - purchaseRequest.getTotalPrice();
-        cust.setBalance(newCustBalance);
-        accountRepository.save(cust);
-
-      //  if(cust.getEmail().equals("admin@gmail.com"))
-
-      //  Items items = new Items();
-
-
-
-        Integer newQuantity = items.getQuantity()-purchaseRequest.getQuantity();
-        items.setQuantity(newQuantity);
-        itemsRepository.save(items);
-
-        Purchase purchase = Purchase.builder()
-                .customer(cust)
-                .items(items)
-                .itemName(purchaseRequest.getItemName())
-                .itemPrice(purchaseRequest.getItemPrice())
-                .quantity(purchaseRequest.getQuantity())
-                .totalPrice(totalPrice)
-                .build();
-
-
-       return purchaseRepository.save(purchase);
-    }
-*/
 
     public Purchase purchaseItem(PurchaseRequest purchaseRequest) throws Exception {
        if (purchaseRequest.getCustId()==null){
@@ -74,8 +31,8 @@ public class PurchaseService {
         if (purchaseRequest.getItemsId()==null){
             throw new Exception("Items Id must not be Null");
         }
-      //  Account customer = accountRepository.findById(purchaseRequest.getItemsId().toString()).get();
-       // Items items = itemsRepository.findById(purchaseRequest.getItemsId()).get();
+        Account customer = accountRepository.findById(purchaseRequest.getCustId()).get();
+        Items items = itemsRepository.findById(purchaseRequest.getItemsId()).get();
 
         Double totalPrice = purchaseRequest.getQuantity()* purchaseRequest.getItemPrice();
 
@@ -87,8 +44,8 @@ public class PurchaseService {
        // accountRepository.save(customer);
 
         Purchase purchase = Purchase.builder()
-                .customer(purchaseRequest.getCustId())
-                .items(purchaseRequest.getItemsId())
+                .customer(customer)
+                .items(items)
                 .itemPrice(purchaseRequest.getItemPrice())
                 .quantity(purchaseRequest.getQuantity())
                 .itemName(purchaseRequest.getItemName())

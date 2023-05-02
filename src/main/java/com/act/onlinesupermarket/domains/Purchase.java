@@ -23,13 +23,13 @@ public class Purchase {
     private String purchaseId;
 
     //@Column(nullable = false)
-    //@ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull(message = "itemId cannot be empty!")
-    private String items;
+    private Items items;
 
-    //@ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull(message = "Customer Id cannot be empty!")
-    private String customer;
+    private Account customer;
 
     @NotNull(message = "Balance cannot be empty!")
     private Double customerBalance;

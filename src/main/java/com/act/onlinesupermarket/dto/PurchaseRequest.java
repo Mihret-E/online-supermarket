@@ -11,8 +11,8 @@ import static java.time.LocalDate.now;
 @Data
 public class PurchaseRequest {
 
-    private String itemsId;
-    private String custId;
+    private Long itemsId;
+    private Long custId;
     private String itemName;
     private Double itemPrice;
     private Integer quantity;
